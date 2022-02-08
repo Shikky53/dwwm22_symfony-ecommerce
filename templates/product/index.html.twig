@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+   <div class="container py-5">
+        <div class="row">
+            {% include "_messages_flash.html.twig" %}
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3>Gestion des produits</h3>
+                            <a href="{{ path('product_new') }}" class="btn btn-primary">Ajouter</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="navigation">
+                                {{ knp_pagination_render(products) }}
+                            </div>
+                            {% for product in products %}
+                                <div class="col-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>{{ product.name | upper }}</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <img src="{{ product.image }}" alt="" class="w-100 imageCard">
+                                        </div>
+                                        <div class="card-footer">
+                                            <p>Prix : {{ product.price | priceFormatEuro }}</p>
+                                            <p>Catégorie : {{ product.category.name }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="{{ path('product_edit',{ 'id' : product.id } ) }}" class="btn btn-info w-100">Modifier</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="navigation">
+                                {{ knp_pagination_render(products) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+{% endblock %}

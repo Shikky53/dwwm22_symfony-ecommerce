@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-4">
+            <div class="card border border-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Gestion des catégories</h5>
+                    <a href="{{ path('category_index') }}" class="card-link">Liste</a>
+                    <a href="#" class="card-link">Ajouter</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card border border-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Gestion des produits</h5>
+                    <a href="{{ path('product_index') }}" class="card-link">Liste</a>
+                    <a href="#" class="card-link">Ajouter</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
