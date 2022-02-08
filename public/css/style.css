@@ -1,4 +1,4 @@
-.imageCaroussel {
+.imageCarousel {
   height: 400px;
   object-fit: cover;
 }
@@ -6,4 +6,8 @@
 .imageCard {
   height: 200px;
   object-fit: cover;
+}
+
+.imageProductDetail{
+  height: 300px;
 }

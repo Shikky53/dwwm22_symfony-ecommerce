@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Video index{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="row">
+            {% include "_messages_flash.html.twig" %}
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h3>Gestion des vidéos</h3>
+                            <a href="{{ path('video_new') }}" class="btn btn-primary">Ajouter</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="navigation">
+                                {{ knp_pagination_render(videos) }}
+                            </div>
+                                 {% for video in videos %}
+                                    <div class="col-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>{{ video.name | upper }}</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <img src="{{ video.image }}" alt="" class="w-100 imageCard">
+                                        </div>
+                                        <div class="card-footer">
+                                            <p>Code ytb : {{ video.codeYoutube }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="{{ path('video_edit',{ 'id' : video.id } ) }}" class="btn btn-info w-100">Modifier</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                    {% endfor %}
+                                <div class="navigation">
+                                {{ knp_pagination_render(videos) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+{% endblock %}
